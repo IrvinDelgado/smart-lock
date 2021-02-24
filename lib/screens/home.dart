@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_lock/apis/auth_apis.dart';
+import 'package:smart_lock/screens/auth/widgets/auth_apis.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
