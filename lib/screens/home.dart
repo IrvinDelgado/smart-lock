@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lock/screens/widgets/nav.dart';
 import 'package:smart_lock/screens/widgets/pulsating_circle.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -47,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text("Smart Lock"),
         centerTitle: true,
