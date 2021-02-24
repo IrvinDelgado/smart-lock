@@ -1,53 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:smart_lock/screens/auth/widgets/auth_apis.dart';
+import 'package:smart_lock/screens/widgets/pulsating_circle.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
+  MyHomePage({Key key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  bool isLocked = false;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  Widget lockedButton() {
+    return Container(
+      child: PulsatingCircleIconButton(
+        onTap: () {
+          setState(() {
+            isLocked = false;
+          });
+        },
+        icon: Icon(
+          Icons.lock_outline,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+
+  Widget unlockedButton() {
+    return Container(
+      child: PulsatingCircleIconButton(
+        onTap: () {
+          setState(() {
+            isLocked = true;
+          });
+        },
+        icon: Icon(
+          Icons.lock_open,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Smart Lock"),
+        centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            RaisedButton(
-              onPressed: () async {
-                await signOut(context);
-              },
-              child: Text('Logout'),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: isLocked ? lockedButton() : unlockedButton(),
       ),
     );
   }

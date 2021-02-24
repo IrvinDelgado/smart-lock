@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_lock/screens/auth/auth.dart';
+import 'package:smart_lock/screens/home.dart';
 //import 'package:smart_lock/screens/home.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        home: AuthScreen(),
+        home: MyHomePage(),
         routes: {
           '/authScreen': (context) => AuthScreen(),
         });
