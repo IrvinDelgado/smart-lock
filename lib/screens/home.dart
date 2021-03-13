@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lock/screens/widgets/keypad.dart';
 import 'package:smart_lock/screens/widgets/nav.dart';
 import 'package:smart_lock/screens/widgets/pulsating_circle.dart';
 
@@ -55,7 +56,20 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.white,
       body: Center(
-        child: isLocked ? lockedButton() : unlockedButton(),
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+            ),
+            isLocked ? lockedButton() : unlockedButton(),
+            Container(
+              height: 50,
+            ),
+            Container(
+              child: KeyPad(),
+            ),
+          ],
+        ),
       ),
     );
   }
