@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_lock/screens/auth/widgets/auth_apis.dart';
 import 'package:smart_lock/screens/camera.dart';
 import 'package:smart_lock/screens/keypad.dart';
+import 'package:smart_lock/screens/profiles.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -21,6 +22,14 @@ class NavDrawer extends StatelessWidget {
               onTap: () => {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => KeyPad()))
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.group_rounded),
+              title: Text('Profiles'),
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profiles()))
               },
             ),
             ListTile(
