@@ -9,7 +9,7 @@
 .history
 .svn/
 .vscode/
-.secret/
+.secrets/
 
 # IntelliJ related
 *.iml
