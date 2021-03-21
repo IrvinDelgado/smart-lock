@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Lock {
   final String title;
   final int status;
-  final int keypad;
+  final String keypad;
   final DocumentReference reference;
 
   Lock.fromMap(Map<String, dynamic> map, {this.reference})

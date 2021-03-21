@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lock/apis/queries.dart';
+import 'package:smart_lock/models/locks.dart';
 
 class KeyPad extends StatefulWidget {
   @override
@@ -57,7 +59,9 @@ class _KeyPadState extends State<KeyPad> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     print(numberController.text);
+                    updateLockKeypad(numberController.text);
                     Navigator.of(context).pop();
+                    setState(() {});
                   }
                 },
                 child: Text('Submit'),
@@ -77,14 +81,20 @@ class _KeyPadState extends State<KeyPad> {
           children: [
             //Widget Displaying KeyNumber
             Container(
-              child: Text(
-                "12315",
-                style: TextStyle(
-                  fontSize: 62,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black,
-                ),
+              child: FutureBuilder(
+                future: getLockData(),
+                builder: (context, snapshot) {
+                  Lock lock = Lock.fromSnapshot(snapshot.data);
+                  return Text(
+                    "${lock.keypad}",
+                    style: TextStyle(
+                      fontSize: 62,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.black,
+                    ),
+                  );
+                },
               ),
             ),
             Container(
