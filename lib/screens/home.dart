@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lock/apis/streams.dart';
 import 'package:smart_lock/screens/widgets/keypad.dart';
 import 'package:smart_lock/screens/widgets/nav.dart';
-import 'package:smart_lock/screens/widgets/pulsating_circle.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -11,40 +11,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isLocked = false;
-
-  Widget lockedButton() {
-    return Container(
-      child: PulsatingCircleIconButton(
-        onTap: () {
-          setState(() {
-            isLocked = false;
-          });
-        },
-        icon: Icon(
-          Icons.lock_outline,
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.red,
-      ),
-    );
-  }
-
-  Widget unlockedButton() {
-    return Container(
-      child: PulsatingCircleIconButton(
-        onTap: () {
-          setState(() {
-            isLocked = true;
-          });
-        },
-        icon: Icon(
-          Icons.lock_open,
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.green,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               height: 50,
             ),
-            isLocked ? lockedButton() : unlockedButton(),
+            lockData(context),
             Container(
               height: 50,
             ),

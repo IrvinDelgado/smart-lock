@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User {
+class Lock {
   final String title;
   final int status;
   final int keypad;
   final DocumentReference reference;
 
-  User.fromMap(Map<String, dynamic> map, {this.reference})
+  Lock.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['title'] != null),
         assert(map['status'] != null),
         assert(map['keypad'] != null),
@@ -14,7 +14,7 @@ class User {
         status = map['status'],
         keypad = map['keypad'];
 
-  User.fromSnapshot(DocumentSnapshot snapshot)
+  Lock.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   @override
