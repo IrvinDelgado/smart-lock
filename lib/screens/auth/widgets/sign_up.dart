@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_lock/screens/home.dart';
+
 import 'package:smart_lock/config/palette.dart';
-import 'package:smart_lock/screens/auth/widgets/title.dart';
-import 'package:smart_lock/screens/auth/widgets/sign_in_up_bar.dart';
+
+import 'title.dart';
+import 'sign_in_up_bar.dart';
+import 'auth_apis.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({Key key, @required this.onSignUpClicked}) : super(key: key);
@@ -31,13 +33,7 @@ class _SignUpState extends State<SignUp> {
         .createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((result) {
-      //api: createUser(result.user.uid, nameController.text, context);
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyHomePage(),
-          ));
-      print(result.user.uid);
+      createUser(result.user.uid, emailController.text, context);
     }).catchError((err) {
       print(err.message);
       showDialog(
@@ -53,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                     Navigator.pushNamedAndRemoveUntil(
                         context, "/authScreen", (r) => false);
                   },
-                )
+                ),
               ],
             );
           });
