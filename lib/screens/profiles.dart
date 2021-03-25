@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './widgets/profile_image.dart';
+import '../dialogs/profiles_dialogs.dart';
 
 class Profiles extends StatefulWidget {
   @override
@@ -31,6 +32,7 @@ class _ProfilesState extends State<Profiles> {
         foregroundColor: Colors.black,
         onPressed: () {
           // Respond to button press
+          addProfile(context);
         },
         child: Icon(Icons.add),
       ),

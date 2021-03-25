@@ -44,7 +44,7 @@ class _SignInState extends State<SignIn> {
               title: Text("Error"),
               content: Text(err.message),
               actions: [
-                FlatButton(
+                TextButton(
                   child: Text("Ok"),
                   onPressed: () {
                     Navigator.of(context).pop();

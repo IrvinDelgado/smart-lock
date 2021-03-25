@@ -43,7 +43,7 @@ class _SignUpState extends State<SignUp> {
               title: Text("Error"),
               content: Text(err.message),
               actions: [
-                FlatButton(
+                TextButton(
                   child: Text("Ok"),
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../dialogs/profiles_dialogs.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
@@ -34,17 +35,10 @@ class ProfileImage extends StatelessWidget {
             ButtonBar(
               buttonMinWidth: 10,
               children: [
-                FlatButton(
-                  textColor: const Color(0xFF6200EE),
+                TextButton(
+                  style: TextButton.styleFrom(primary: Colors.red),
                   onPressed: () {
-                    // Perform some action
-                  },
-                  child: const Icon(Icons.edit),
-                ),
-                FlatButton(
-                  textColor: const Color(0xFF6200EE),
-                  onPressed: () {
-                    // Perform some action
+                    deleteProfiles(context);
                   },
                   child: const Icon(Icons.delete),
                 ),

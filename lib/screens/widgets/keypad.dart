@@ -46,7 +46,7 @@ class _KeyPadState extends State<KeyPad> {
             ),
           ),
           actions: [
-            new FlatButton(
+            new TextButton(
               child: new Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -54,8 +54,7 @@ class _KeyPadState extends State<KeyPad> {
             ),
             Padding(
               padding: EdgeInsets.all(20.0),
-              child: RaisedButton(
-                color: Colors.lightGreen,
+              child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     print(numberController.text);
@@ -104,7 +103,7 @@ class _KeyPadState extends State<KeyPad> {
               height: 30,
             ),
             //Button to Change Widget
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 _changeKeyDialogue(context);
               },

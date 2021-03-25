@@ -35,7 +35,6 @@ class _PulsatingCircleIconButtonState extends State<PulsatingCircleIconButton>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _animationController.dispose();
     super.dispose();
   }
