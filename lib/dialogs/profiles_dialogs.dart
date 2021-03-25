@@ -1,4 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:smart_lock/apis/queries.dart';
 
 Future addProfile(context) {
   final _formKey = GlobalKey<FormState>();
@@ -48,9 +51,18 @@ Future addProfile(context) {
             padding: EdgeInsets.all(20.0),
             child: ElevatedButton(
               //color: Colors.lightGreen,
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState.validate()) {
                   print(nameController.text);
+                  final picker = ImagePicker();
+                  final pickedFile =
+                      await picker.getImage(source: ImageSource.gallery);
+                  if (pickedFile != null) {
+                    print(File(pickedFile.path));
+                    uploadImage(File(pickedFile.path), nameController.text);
+                  } else {
+                    print('No image selected.');
+                  }
                 }
               },
               child: Text('Add Image'),
