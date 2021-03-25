@@ -84,6 +84,9 @@ class _KeyPadState extends State<KeyPad> {
               child: FutureBuilder(
                 future: getLockData(),
                 builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
                   Lock lock = Lock.fromSnapshot(snapshot.data);
                   return Text(
                     "${lock.keypad}",
