@@ -15,6 +15,12 @@ Future<DocumentSnapshot> getLockData() async {
   return lockData;
 }
 
+Future<DocumentSnapshot> getUserData() async {
+  DocumentSnapshot userData =
+      await firestoreInstance.collection("users").doc(userUid).get();
+  return userData;
+}
+
 void updateLockKeypad(String newKeypad) {
   firestoreInstance
       .collection("locks")

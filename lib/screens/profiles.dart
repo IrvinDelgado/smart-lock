@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:smart_lock/apis/queries.dart';
+import 'package:smart_lock/models/users.dart';
 import './widgets/profile_image.dart';
 import '../dialogs/profiles_dialogs.dart';
 
@@ -15,16 +18,34 @@ class _ProfilesState extends State<Profiles> {
         title: Text("Profiles"),
         centerTitle: true,
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(children: [
-              ProfileImage(
-                imageUrl: 'https://picsum.photos/250?image=9',
-                name: 'Irvin',
-              ),
-            ]),
-          ),
+      body: SingleChildScrollView(
+        child: FutureBuilder(
+          future: getUserData(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasData) {
+              User user = User.fromSnapshot(snapshot.data);
+              return Container(
+                height: 630,
+                child: ListView.separated(
+                  padding: const EdgeInsets.all(8),
+                  scrollDirection: Axis.vertical,
+                  itemCount: user.profiles.length,
+                  //shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return ProfileImage(
+                        imageUrl: user.profiles[index],
+                        name: getNameFromUrl(user.profiles[index]));
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(),
+                ),
+              );
+            }
+            return Container();
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -38,4 +59,10 @@ class _ProfilesState extends State<Profiles> {
       ),
     );
   }
+}
+
+String getNameFromUrl(String url) {
+  int startName = url.indexOf('2F') + 2;
+  int endName = url.indexOf('?');
+  return url.substring(startName, endName);
 }
