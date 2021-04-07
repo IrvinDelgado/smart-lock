@@ -74,7 +74,7 @@ Future addProfile(context) {
   );
 }
 
-Future deleteProfiles(context) {
+Future deleteProfiles(context, name) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -99,7 +99,9 @@ Future deleteProfiles(context) {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.redAccent),
               ),
-              onPressed: () {},
+              onPressed: () {
+                deleteImage(name);
+              },
               child: Text('Delete'),
             ),
           ),

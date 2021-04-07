@@ -38,3 +38,12 @@ void uploadImage(File imageFile, String profileName) async {
     "profiles": FieldValue.arrayUnion([url])
   });
 }
+
+void deleteImage(name) async {
+  String url =
+      await firebaseStorage.ref().child('uploads/$name').getDownloadURL();
+  await firebaseStorage.ref().child('uploads/$name').delete();
+  await firestoreInstance.collection("users").doc(userUid).update({
+    "profiles": FieldValue.arrayRemove([url])
+  });
+}

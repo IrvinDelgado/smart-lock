@@ -38,7 +38,7 @@ class ProfileImage extends StatelessWidget {
                 TextButton(
                   style: TextButton.styleFrom(primary: Colors.red),
                   onPressed: () {
-                    deleteProfiles(context);
+                    deleteProfiles(context, name);
                   },
                   child: const Icon(Icons.delete),
                 ),
