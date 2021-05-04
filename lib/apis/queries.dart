@@ -28,6 +28,13 @@ void updateLockKeypad(String newKeypad) {
       .update({"keypad": newKeypad});
 }
 
+void queueTakePhoto() {
+  firestoreInstance
+      .collection("locks")
+      .doc("front-door")
+      .update({"takingPhoto": 1});
+}
+
 void uploadImage(File imageFile, String profileName) async {
   await firebaseStorage.ref().child('uploads/$profileName').putFile(imageFile);
   String url = await firebaseStorage

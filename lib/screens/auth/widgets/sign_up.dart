@@ -136,7 +136,7 @@ class _SignUpState extends State<SignUp> {
                           this.widget.onSignUpClicked?.call();
                         },
                         child: const Text(
-                          'Sign up',
+                          'Sign In',
                           style: TextStyle(
                             fontSize: 16,
                             decoration: TextDecoration.underline,
