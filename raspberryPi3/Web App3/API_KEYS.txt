@@ -1,0 +1,8 @@
+Key1
+6362bd36ccf84baab7f37188ffb6de4f
+Key2
+8930420b56fe417794a39e242b0ce1c2
+EndPoint
+https://smartlockfaces420.cognitiveservices.azure.com/
+location
+eastus
